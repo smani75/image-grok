@@ -9,12 +9,12 @@ else {
 }  
 function imageGrok() {  
 	$(document).ready(function(){
-    	if($('#image-grabber-container').length == 0) {
+    	if($('#iG-container').length == 0) {
 	    	$('html, body').animate({scrollTop:0}, 'fast');
-	    	$('<style type="text/css">@import url(https://www.filepicker.io/api/file/Q-EIrdPsTHqdGDkf5TgB);</style>').appendTo("head");
-	    	$('body').append('<div id="background-blocker"></div><div id="image-grabber-container"><div id="button-toggle"><span id="close">Close</span></div><ul id="list-of-images"></ul></div>');
-	    	$("#button-toggle").click(function() {
-				$("#image-grabber-container, #background-blocker").remove();
+	    	$('<style type="text/css">@import url(https://www.filepicker.io/api/file/3_h17xebTkK0NmPxcUoW);</style>').appendTo("head");
+	    	$('body').append('<div id="background-blocker"></div><div id="iG-container"><div id="iG-close"><span id="close">Close</span></div><ul id="iG-list"></ul></div>');
+	    	$("#iG-close").click(function() {
+				$("#iG-container, #background-blocker").remove();
 			})
 		 	var iG = []
 	    	$('img').each(function() {
@@ -22,15 +22,15 @@ function imageGrok() {
 						iG.push(this)
 					}
 			});
+			var iGFrameImgs = $('iframe').contents().find('img')
+			if (iGFrameImgs.length > 0) {
+				$.each(iGFrameImgs, function(){
+					if (this.clientWidth > 99 && this.clientHeight > 49 && this.src.indexOf('.gif') < 0){
+						iG.push(this)
+					}
+				})
+			}
 	    	console.log(iG.length)
-
-	    	var beginLiTag = "<li><a href='";
-			var endATag = "'>";
-			var beginImageTag = "<img src='";
-			var middleImageTag = "' style='margin-top:";
-			var endImageTag = "px'>";
-			var endLiTag = "</a></li>";
-
 
 			$.each(iG, function(){
 				if (this.clientWidth > this.clientHeight){
@@ -40,10 +40,10 @@ function imageGrok() {
 					bgSize = "background-size:100%;"
 				}
 	
-				finalLink = "<li style='background:url("+this.src+") center center no-repeat;"+bgSize+"'><a href='"+this.src+"'></a>"
-				$('#list-of-images').append(finalLink);
+				finalLink = "<li style='background:url("+this.src+") center center no-repeat;"+bgSize+"'><a href='"+this.src+"'><span>+</span></a>"
+				$('#iG-list').append(finalLink);
 			})
-			$('#list-of-images a').click(function(e){
+			$('#iG-list a').click(function(e){
 				e.preventDefault();
 				iGlink = "http://localhost:3000/add_image?img="+this.href
 				window.open(iGlink,'popup','width=600,height=340');
