@@ -16,7 +16,7 @@ function imageGrok() {
 				$('<head></head>').insertBefore('body');
 			}
 
-			$('<style type="text/css">@import url(https://www.cord.ly/grok.css);</style>').appendTo("head");
+			$('<style type="text/css">@import url(<your url here>/grok.css);</style>').appendTo("head");
 			$('body').append('<div id="background-blocker"></div><div id="iG-container"><div id="iG-close"><span id="close">Close</span></div><ul id="iG-list"></ul></div>');
 			$("#iG-close").click(function() {
 				$("#iG-container, #background-blocker").remove();
