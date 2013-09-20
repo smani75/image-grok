@@ -1,1 +1,1 @@
-javascript: (function () {       var jsCode = document.createElement('script');       jsCode.setAttribute('src', 'http://www.cord.ly/assets/grok.js');     document.body.appendChild(jsCode);    }());
+javascript: (function () {       var jsCode = document.createElement('script');       jsCode.setAttribute('src', '<your url here>/grok.js');     document.body.appendChild(jsCode);    }());
