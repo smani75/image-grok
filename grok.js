@@ -11,7 +11,7 @@ function imageGrok() {
 	$(document).ready(function(){
     	if($('#iG-container').length == 0) {
 	    	$('html, body').animate({scrollTop:0}, 'fast');
-	    	$('<style type="text/css">@import url(https://www.filepicker.io/api/file/3_h17xebTkK0NmPxcUoW);</style>').appendTo("head");
+	    	$('<style type="text/css">@import url(http://www.cord.ly/assets/grok.css);</style>').appendTo("head");
 	    	$('body').append('<div id="background-blocker"></div><div id="iG-container"><div id="iG-close"><span id="close">Close</span></div><ul id="iG-list"></ul></div>');
 	    	$("#iG-close").click(function() {
 				$("#iG-container, #background-blocker").remove();
